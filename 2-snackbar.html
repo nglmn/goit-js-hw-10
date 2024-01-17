@@ -4,8 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2-snackbar</title>
+    
+    <script type="module" crossorigin src="/vanilla-app-template/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/vanilla-app-template/assets/vendor-651d7991.js">
+    <link rel="modulepreload" crossorigin href="/vanilla-app-template/assets/iziToastCustom-d3224d0c.js">
+    <link rel="stylesheet" href="/vanilla-app-template/assets/vendor-80d0dc0f.css">
+    <link rel="stylesheet" href="/vanilla-app-template/assets/styles-7daab929.css">
   </head>
   <body>
     <a href="./index.html">Go back</a>
+
+    <form class="form">
+      <label class="label">
+        <p class="delay-label">Delay (ms)</p>
+        <input type="number" name="delay" required class="user-input-number" />
+      </label>
+
+      <fieldset>
+        <legend>State</legend>
+        <label>
+          <input
+            class="fulfiled-radio"
+            type="radio"
+            name="state"
+            value="fulfilled"
+            required
+          />
+          Fulfilled
+        </label>
+        <label>
+          <input
+            class="rejected-radio"
+            type="radio"
+            name="state"
+            value="rejected"
+            required
+          />
+          Rejected
+        </label>
+      </fieldset>
+
+      <button type="submit" class="submit-btn">Create notification</button>
+    </form>
+    
   </body>
 </html>
