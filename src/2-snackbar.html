@@ -4,8 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2-snackbar</title>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <a href="./index.html">Go back</a>
+
+    <form class="form">
+      <label class="label">
+        <p class="delay-label">Delay (ms)</p>
+        <input type="number" name="delay" required class="user-input-number" />
+      </label>
+
+      <fieldset>
+        <legend>State</legend>
+        <label>
+          <input
+            class="fulfiled-radio"
+            type="radio"
+            name="state"
+            value="fulfilled"
+            required
+          />
+          Fulfilled
+        </label>
+        <label>
+          <input
+            class="rejected-radio"
+            type="radio"
+            name="state"
+            value="rejected"
+            required
+          />
+          Rejected
+        </label>
+      </fieldset>
+
+      <button type="submit" class="submit-btn">Create notification</button>
+    </form>
+    <script type="module" src="./js/2-snackbar.js"></script>
   </body>
 </html>

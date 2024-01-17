@@ -2,6 +2,8 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
 
+import { iziTimerError } from "./iziToastCustom";
+
 let daysTimer = document.querySelector('span[data-days]');
 let hoursTimer = document.querySelector('span[data-hours]');
 let minutesTimer = document.querySelector('span[data-minutes]');
@@ -12,6 +14,7 @@ onDisableBtn(true);
 
 let userSelectedDate = null;
 const oneSecond = 1000;
+
 
 const options = {
     enableTime: true,
@@ -24,11 +27,12 @@ const options = {
         const date = new Date();
 
         if (userSelectedDate.getTime() < date.getTime()) {
-            iziToast.error({ title: 'Error', message: 'Please choose a date in the future' });
+            iziToast.error(iziTimerError);
         } else {
             onDisableBtn(false);
 
             startBtn.addEventListener('click', () => {
+                onDisableBtn(true);
                 let leftTime = userSelectedDate.getTime() - date.getTime();
                 setInterval(() => {
                     const { days, hours, minutes, seconds } = convertMs(leftTime);
@@ -78,7 +82,3 @@ function onDisableBtn(res) {
 
 flatpickr('#datetime-picker', options);
 
-iziToast.show({
-    color: 'white',
-    progressBarColor: 'rgb(0, 255, 184)'
-});

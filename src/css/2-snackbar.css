@@ -1,0 +1,61 @@
+form{
+    width: 360px;
+}
+.label{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.delay-label{
+    color: #2E2F42;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    /* 150% */
+    letter-spacing: 0.04em;
+}
+
+.user-input-number[type='number']{
+    padding: 8px 16px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #808080; 
+    margin-bottom: 30px;   
+}
+.user-input-number[type='number']:hover{
+    border-color: #000000;
+}.user-input-number[type='number']:active{
+    border-color: #4E75FF;
+}
+.user-input-number[type=number]::-webkit-inner-spin-button,
+.user-input-number[type=number]::-webkit-outer-spin-button {
+    /* -webkit-appearance: none; */
+    margin: 0;
+}
+
+fieldset{
+    height: 64px;
+    stroke-width: 1px;
+    border: 1px solid #808080;
+    border-radius: 4px;
+}
+
+.submit-btn{
+    margin-top: 24px;
+    background-color: #4E75FF;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    padding: 8px 16px;
+
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    /* 150% */
+    letter-spacing: 0.04em;
+    transition: 300ms all ease;
+}
+.submit-btn:hover{
+    background-color: #6C8CFF;
+}
