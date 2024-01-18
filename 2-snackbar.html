@@ -7,9 +7,9 @@
     
     <script type="module" crossorigin src="/vanilla-app-template/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/vanilla-app-template/assets/vendor-651d7991.js">
-    <link rel="modulepreload" crossorigin href="/vanilla-app-template/assets/iziToastCustom-d3224d0c.js">
+    <link rel="modulepreload" crossorigin href="/vanilla-app-template/assets/iziToastCustom-6c2f57f2.js">
     <link rel="stylesheet" href="/vanilla-app-template/assets/vendor-80d0dc0f.css">
-    <link rel="stylesheet" href="/vanilla-app-template/assets/styles-7daab929.css">
+    <link rel="stylesheet" href="/vanilla-app-template/assets/styles-3e113828.css">
   </head>
   <body>
     <a href="./index.html">Go back</a>
@@ -22,26 +22,28 @@
 
       <fieldset>
         <legend>State</legend>
-        <label>
-          <input
-            class="fulfiled-radio"
-            type="radio"
-            name="state"
-            value="fulfilled"
-            required
-          />
-          Fulfilled
-        </label>
-        <label>
-          <input
-            class="rejected-radio"
-            type="radio"
-            name="state"
-            value="rejected"
-            required
-          />
-          Rejected
-        </label>
+        <div class="radio-container">
+          <label>
+            <input
+              class="fulfiled-radio"
+              type="radio"
+              name="state"
+              value="fulfilled"
+              required
+            />
+            Fulfilled
+          </label>
+          <label>
+            <input
+              class="rejected-radio"
+              type="radio"
+              name="state"
+              value="rejected"
+              required
+            />
+            Rejected
+          </label>
+        </div>
       </fieldset>
 
       <button type="submit" class="submit-btn">Create notification</button>
