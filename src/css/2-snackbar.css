@@ -1,5 +1,9 @@
 form{
     width: 360px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .label{
     display: flex;
@@ -27,17 +31,16 @@ form{
 }.user-input-number[type='number']:active{
     border-color: #4E75FF;
 }
-.user-input-number[type=number]::-webkit-inner-spin-button,
-.user-input-number[type=number]::-webkit-outer-spin-button {
-    /* -webkit-appearance: none; */
-    margin: 0;
-}
 
 fieldset{
     height: 64px;
     stroke-width: 1px;
     border: 1px solid #808080;
     border-radius: 4px;
+}
+fieldset:hover, 
+fieldset:active{
+    border: 1px solid black;
 }
 
 .submit-btn{
@@ -58,4 +61,11 @@ fieldset{
 }
 .submit-btn:hover{
     background-color: #6C8CFF;
+}
+.radio-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 5px;
 }

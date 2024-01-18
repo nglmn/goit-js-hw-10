@@ -8,10 +8,9 @@ export const iziTimerError = {
     message: 'Please choose a date in the future',
     position: 'topRight',
     backgroundColor: '#EF4040',
-    theme: 'light',
+    theme: 'dark',
     titleColor: 'white',
     messageColor: 'white',
-    iconColor: 'white',
     color: 'white',
     progressBarColor: '#B51B1B'
 }
@@ -21,10 +20,9 @@ export const iziSnackbarSuccess = {
     message: '',
     position: 'topRight',
     backgroundColor: '#59A10D',
-    theme: 'light',
+    theme: 'dark',
     titleColor: 'white',
     messageColor: '#FFFFFF',
-    iconColor: '#FFFFFF',
     color: '#FFFFFF',
     progressBarColor: '#326101'
 }
@@ -34,10 +32,9 @@ export const iziSnackbarError = {
     message: '',
     position: 'topRight',
     backgroundColor: '#EF4040',
-    theme: 'light',
+    theme: 'dark',
     titleColor: 'white',
     messageColor: '#FFFFFF',
-    iconColor: '#FFFFFF',
     color: '#FFFFFF',
     progressBarColor: '#B51B1B'
 }

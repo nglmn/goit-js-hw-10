@@ -17,26 +17,28 @@
 
       <fieldset>
         <legend>State</legend>
-        <label>
-          <input
-            class="fulfiled-radio"
-            type="radio"
-            name="state"
-            value="fulfilled"
-            required
-          />
-          Fulfilled
-        </label>
-        <label>
-          <input
-            class="rejected-radio"
-            type="radio"
-            name="state"
-            value="rejected"
-            required
-          />
-          Rejected
-        </label>
+        <div class="radio-container">
+          <label>
+            <input
+              class="fulfiled-radio"
+              type="radio"
+              name="state"
+              value="fulfilled"
+              required
+            />
+            Fulfilled
+          </label>
+          <label>
+            <input
+              class="rejected-radio"
+              type="radio"
+              name="state"
+              value="rejected"
+              required
+            />
+            Rejected
+          </label>
+        </div>
       </fieldset>
 
       <button type="submit" class="submit-btn">Create notification</button>

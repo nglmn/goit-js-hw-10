@@ -14,7 +14,7 @@ onDisableBtn(true);
 
 let userSelectedDate = null;
 const oneSecond = 1000;
-
+const date = new Date();
 
 const options = {
     enableTime: true,
@@ -24,35 +24,34 @@ const options = {
     onClose(selectedDates) {
         userSelectedDate = selectedDates[0];
 
-        const date = new Date();
-
         if (userSelectedDate.getTime() < date.getTime()) {
             iziToast.error(iziTimerError);
         } else {
             onDisableBtn(false);
 
-            startBtn.addEventListener('click', () => {
-                onDisableBtn(true);
-                let leftTime = userSelectedDate.getTime() - date.getTime();
-                setInterval(() => {
-                    const { days, hours, minutes, seconds } = convertMs(leftTime);
-
-                    daysTimer.textContent = checkByZero(days);
-                    hoursTimer.textContent = checkByZero(hours);
-                    minutesTimer.textContent = checkByZero(minutes);
-                    secondsTimer.textContent = checkByZero(seconds);
-
-                    if (leftTime > oneSecond) {
-                        leftTime -= oneSecond;
-                    } else {
-                        clearInterval();
-                    }
-                }, 1000);
-
-            })
+            startBtn.addEventListener('click', handleStartTimer);
         }
     },
 };
+
+function handleStartTimer() {
+    onDisableBtn(true);
+    let leftTime = userSelectedDate.getTime() - date.getTime();
+    setInterval(() => {
+        const { days, hours, minutes, seconds } = convertMs(leftTime);
+
+        daysTimer.textContent = checkByZero(days);
+        hoursTimer.textContent = checkByZero(hours);
+        minutesTimer.textContent = checkByZero(minutes);
+        secondsTimer.textContent = checkByZero(seconds);
+
+        if (leftTime > oneSecond) {
+            leftTime -= oneSecond;
+        } else {
+            clearInterval();
+        }
+    }, 1000);
+}
 
 function convertMs(ms) {
     // Number of milliseconds per unit of time
