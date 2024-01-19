@@ -10,34 +10,34 @@ let minutesTimer = document.querySelector('span[data-minutes]');
 let secondsTimer = document.querySelector('span[data-seconds]');
 
 const startBtn = document.querySelector('button[data-start]');
-onDisableBtn(true);
+toggleStartButtonDisabledState(true);
 
 let userSelectedDate = null;
 const oneSecond = 1000;
-const date = new Date();
 
 const options = {
     enableTime: true,
     time_24hr: true,
-    defaultDate: new Date(),
+    defaultDate: Date.now(),
     minuteIncrement: 1,
     onClose(selectedDates) {
         userSelectedDate = selectedDates[0];
 
-        if (userSelectedDate.getTime() < date.getTime()) {
+        const currentDate = new Date();
+        if (userSelectedDate.getTime() < currentDate) {
             iziToast.error(iziTimerError);
         } else {
-            onDisableBtn(false);
-
+            toggleStartButtonDisabledState(false);
             startBtn.addEventListener('click', handleStartTimer);
         }
     },
 };
 
-function handleStartTimer() {
-    onDisableBtn(true);
-    let leftTime = userSelectedDate.getTime() - date.getTime();
-    setInterval(() => {
+const handleStartTimer = () => {
+    toggleStartButtonDisabledState(true);
+    let leftTime = userSelectedDate.getTime() - Date.now();
+
+    const intervalID = setInterval(() => {
         const { days, hours, minutes, seconds } = convertMs(leftTime);
 
         daysTimer.textContent = checkByZero(days);
@@ -48,9 +48,9 @@ function handleStartTimer() {
         if (leftTime > oneSecond) {
             leftTime -= oneSecond;
         } else {
-            clearInterval();
+            clearInterval(intervalID);
         }
-    }, 1000);
+    }, oneSecond);
 }
 
 function convertMs(ms) {
@@ -75,7 +75,7 @@ function convertMs(ms) {
 function checkByZero(number) {
     return number >= 10 ? number : `0${number}`
 }
-function onDisableBtn(res) {
+function toggleStartButtonDisabledState(res) {
     return res ? startBtn.setAttribute('disabled', '') : startBtn.removeAttribute('disabled');
 }
 
