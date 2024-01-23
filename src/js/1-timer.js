@@ -10,10 +10,13 @@ let minutesTimer = document.querySelector('span[data-minutes]');
 let secondsTimer = document.querySelector('span[data-seconds]');
 
 const startBtn = document.querySelector('button[data-start]');
-toggleStartButtonDisabledState(true);
 
-let userSelectedDate = null;
+
+let userSelectedDate = 0;
 const oneSecond = 1000;
+let leftTime = 0;
+
+toggleStartButtonDisabledState(true);
 
 const options = {
     enableTime: true,
@@ -21,34 +24,46 @@ const options = {
     defaultDate: Date.now(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-        userSelectedDate = selectedDates[0];
-
-        const currentDate = new Date();
-        if (userSelectedDate.getTime() < currentDate) {
-            iziToast.error(iziTimerError);
-        } else {
+        userSelectedDate = selectedDates[0].getTime();
+        if (checkTheValidDate(userSelectedDate)) {
             toggleStartButtonDisabledState(false);
-            startBtn.addEventListener('click', handleStartTimer);
         }
     },
 };
 
-const handleStartTimer = () => {
+flatpickr('#datetime-picker', options);
+
+const checkTheValidDate = (userSelectedDate) => {
+    const currentDate = new Date();
+    if (userSelectedDate < currentDate.getTime()) {
+        iziToast.error(iziTimerError);
+        return false;
+    } else {
+        return true;
+    }
+}
+
+startBtn.addEventListener('click', handleStartTimer);
+
+
+function handleStartTimer() {
+    startBtn.removeEventListener('click', handleStartTimer);
     toggleStartButtonDisabledState(true);
-    let leftTime = userSelectedDate.getTime() - Date.now();
+    leftTime = userSelectedDate - Date.now();
 
     const intervalID = setInterval(() => {
         const { days, hours, minutes, seconds } = convertMs(leftTime);
 
-        daysTimer.textContent = checkByZero(days);
-        hoursTimer.textContent = checkByZero(hours);
-        minutesTimer.textContent = checkByZero(minutes);
-        secondsTimer.textContent = checkByZero(seconds);
+        daysTimer.textContent = formatNumber(days);
+        hoursTimer.textContent = formatNumber(hours);
+        minutesTimer.textContent = formatNumber(minutes);
+        secondsTimer.textContent = formatNumber(seconds);
 
         if (leftTime > oneSecond) {
             leftTime -= oneSecond;
         } else {
             clearInterval(intervalID);
+            toggleStartButtonDisabledState(true);
         }
     }, oneSecond);
 }
@@ -72,12 +87,12 @@ function convertMs(ms) {
     return { days, hours, minutes, seconds };
 }
 
-function checkByZero(number) {
+function formatNumber(number) {
     return number >= 10 ? number : `0${number}`
 }
 function toggleStartButtonDisabledState(res) {
     return res ? startBtn.setAttribute('disabled', '') : startBtn.removeAttribute('disabled');
 }
 
-flatpickr('#datetime-picker', options);
+
 

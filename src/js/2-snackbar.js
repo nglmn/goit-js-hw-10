@@ -26,4 +26,4 @@ form.addEventListener('submit', (e) => {
             iziSnackbarError.message = `Rejected promise in ${delayTime} ms`
             iziToast.error(iziSnackbarError)
         })
-})
+});
